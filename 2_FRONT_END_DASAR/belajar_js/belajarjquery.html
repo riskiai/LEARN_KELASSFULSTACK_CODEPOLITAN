@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar JQUERY</title>
+    <link rel="stylesheet" href="belajarjquery.css">
+    <link rel="stylesheet" href="slick-1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="slick-1.8.1/slick/slick-theme.css">
+
+
+</head>
+<body>
+    
+    <div style="text-align: center;">
+        <h1>Belajar JQUERY!</h1>
+    </div>
+    
+    <!-- Menggunakan Library Untuk JQuery -->
+    <div class="your-class">
+       <div id="riski">Riski</div>
+       <div>Riski</div>
+       <div>Riski</div>
+       
+      </div> 
+    <button class="JPO_open">Open popup</button>
+    <div id="JPO">
+        <h1>RISKI GANTENG </h1>
+        <!-- Add a button to close the popup (optional) -->
+        <button class="JPO_close">Close</button>
+      </div>
+    <!-- JQUERY SLICK -->
+    <!-- JQUERY UI -->
+    <!-- JQUERY POPUP  http://ggcom.it/-->
+    <!-- JQUERY UPLOAD FILE https://blueimp.github.io/jQuery-File-Upload/ -->
+
+
+    <!-- Manipulasi CSS Dalam Jquery -->
+    <!-- <h1>Kemana Kamu Ingin Pergi ?</h1>
+    <ul class="lokasi">
+        <li class="bandung">
+            Bandung
+         </li>
+        <li class="surabaya">
+            Surabaya
+        </li>
+        <li class="jakarta">
+            Jakarta
+        </li>
+    </ul>
+    <button id="gantiBandungJadiBiru">KLIK JADI BIRU</button>
+    <button id="gantiBandungJadiMerah">KLIK JADI MERAH</button>
+    <button id="gantiBandungJadiBesar">KLIK JADI BESAR</button>
+ -->
+
+
+  <!-- Fitur Effect Di JQuery -->
+  <!--   <h1>Kemana Kamu Ingin Pergi ?</h1>
+    <ul class="lokasi">
+        <li class="bandung">
+            Bandung 
+            <button id="KeBandung">Pergi!</button> -->
+            <!-- <button id="hideBandung">H</button> -->
+            <!-- <button id="hapusBandung">X</button>
+         </li>
+        <li class="surabaya">Surabaya</li>
+        <li class="jakarta">Jakarta</li>
+    </ul>
+    <button id="toggleBandung">Toggle Bandung</button> -->
+    <!-- 
+
+        hide(kecepatan) Digunakan untuk menyembunyikan elemen yang dipilih.
+
+        show(kecepatan) Digunakan untuk memunculkan elemen yang dipilih.
+
+        toggle(kecepatan) Beralih antarahide dan show, yaitu ketika elemen dalam keadaan muncul/ show maka akan disembunyikan / dihide, sedangkan ketika dalam keadaan sembunyi /hide maka akan dimuculkan /show.
+     -->
+
+    <!-- Event Handler Di JQuery -->
+    <!-- <h1>Kemana Kamu Ingin Pergi ?</h1>
+    <ul class="lokasi">
+        <li class="bandung">
+            Bandung 
+            <button id="KeBandung">Pergi!</button>
+            <button id="hapusBandung">X</button>
+         </li>
+        <li class="surabaya">Surabaya</li>
+        <li class="jakarta">Jakarta</li>
+    </ul> -->
+
+    <!-- 
+        Pengertian Event Handler
+        Semua tindakan pengguna yang berbeda dimana dapat ditanggapi oleh Javascript / jQuery disebut event.
+
+        Contoh
+
+        Menggerakkan mouse di atas elemen
+        Memilih tombol radio
+        Mengklik elemen
+        Macam Event Handler
+        Berikut macam event handler yang dapat kita gunakan sesuai kebutuhan.
+
+        | Mouse Events | Keyboard Events | Form Events | Document/Window Events | |
+     -->
+     <!-- 
+
+        $(' #tombolkirim').click(function() {});
+        $(' #tombolkirim').on('click', function() {});
+
+      -->
+
+
+    <!-- Memanipulasi DOM di JQuery -->
+    <!-- 
+        .first
+        .last
+        .prev
+        .next
+        .children
+        .find
+        .parent
+     -->
+     <!-- <h1>Kemana Anda Ingin Pergi</h1>
+     <ul class="lokasi">
+        <li>Bandung</li>
+        <li>Jakarta</li>
+        <li>Makasar</li>
+        <li>Malang</li> -->
+        <!-- <ul>
+            <li>Bandung Kota</li>
+            <li>Bandung Timur</li>
+            <li class="kota">Bandung Barat</li>
+        </ul> -->
+    <!-- </ul> -->
+
+
+    <!-- Bekerja Dengan DOM di JQuery -->
+    <!--  <h1>Kemana Kamu Ingin Pergi</h1>
+    <ul>
+        <li class="amerika">Bandung</li>
+        <li>Suranaya</li>
+        <li>Jakarta</li>
+    </ul> -->
+    <!-- <ul id="destinations">
+        <li>Bandung</li>
+        <ul>
+            <li>Bandung Kota</li>
+            <li>Bandung Timur</li>
+            <li class="kota">Bandung Barat</li>
+        </ul>
+        <li>Jakarta</li>
+        <li id="makmur">Makasar</li>
+    </ul>
+    <button>Aksi</button> -->
+
+    <!-- SCRIPT LIBRARY -->
+    <script src="jquery-3.7.0.min.js"></script>
+    <script src="slick-1.8.1/slick/slick.min.js"></script>
+    <script src="jquery-popup-overlay-gh-pages/jquery.popupoverlay.js"></script>
+
+    <!-- Menggunakan Library Untuk Jquery -->
+    <script>
+         $(document).ready(function() {
+            $('.your-class').slick();
+            $('#JPO').popup();
+        });
+    </script>
+
+    <!-- Manipulasi CSS Dalam Jquery -->
+    <!-- <script>
+        $(document).ready(function () {
+            $('#gantiBandungJadiBiru').on('click', function (){
+                $('.bandung').removeClass('merah');
+                $('.bandung').addClass('biru');
+            });
+            $('#gantiBandungJadiMerah').on('click', function (){
+                $('.bandung').removeClass('biru');
+                $('.bandung').addClass('merah');
+            });
+            $('#gantiBandungJadiBesar').on('click', function (){
+                $('.bandung').animate({
+                    fontSize: 100
+                });
+            });
+        });
+    </script>
+ -->
+    <!-- Fitur Effect di JQuery -->
+    <!-- <script>
+        // efect animasi
+        // $(document).ready(function() {
+        //     $('#KeBandung').on('click', function(){
+        //         alert ('Saya Suka Ke Bandung');
+        //     });
+        //     $('#hapusBandung').on('click', function(){
+        //         $('.bandung').remove();
+        //         alert('Bandung Dihapus :()');
+        //     });
+        //     $('#toggleBandung').on('click', function(){
+        //         $('.bandung').animate({
+        //             marginLeft : 202 
+        //         });
+        //     });
+            // $('#toggleBandung').on('click', function(){
+            //     $('.bandung').slideToggle();
+            // });
+            // $('#toggleBandung').on('click', function(){
+            //     $('.bandung').fadeToggle();
+            // });
+            // $('#toggleBandung').on('click', function(){
+            //     $('.bandung').toggle();
+            // });
+            // $('#hideBandung').on('click', function(){
+            //     $('.bandung').hide();
+            // });
+            // $('#hideBandung').on('click', function(){
+            //     $('.bandung').fadeOut(1000);
+            // });
+            // $('#hideBandung').on('click', function(){
+            //     $('.bandung').slideUp(1000);
+            // });
+        // });
+
+     </script> -->
+
+    <!-- Event Handler Di JQuery -->
+    <!-- <script>
+
+        $(document).ready(function() {
+            $('#KeBandung').on('click', function(){
+                alert ('Saya Suka Ke Bandung');
+            });
+            $('#hapusBandung').on('click', function(){
+                $('.bandung').remove();
+                alert('Bandung Dihapus :()');
+            });
+        });
+
+    </script> -->
+
+   <!-- Memanipulasi DOM di JQuery -->
+   <!--  <script>
+        $(document).ready(function() {
+            var jogja=$('<li>Yogyakarta</li>');
+            var bali =$('<li>Bali</li>');
+            var subjudul=$('<h2>Pilih Tujuan Anda</h2>');
+            var penutup=$('<h3>Terimakasi</h3>');
+            jogja.prependTo($('.lokasi'));
+            bali.appendTo($('.lokasi'));
+            subjudul.insertBefore($('.lokasi'));
+            penutup.insertAfter($('.lokasi'));
+        });
+    </script> -->
+
+    <!-- Bekerja Dengan DOM di JQuery -->
+    <!-- Untuk Memilih ganjil dan genap Menggunakan odd dan even -->
+   <!--  <script >
+        $(document).ready(function() {
+            $("button").click(function(){
+                $("#destinations li:odd").css("background-color", "blue");
+                $("#destinations li:even").css("background-color", "yellow");
+            })
+        })
+    </script> -->
+
+    <!-- <script>
+        $(document).ready(function() {
+            console.log('Mencari Kota');
+            $("button").click(function() {
+                $(".kota, #makmur").css("background-color", "yellow"); 
+            });
+        });
+    </script> -->
+
+    <!-- <script>
+        $(document).ready(function() {
+            console.log('JQuery Sudah Jalan');
+            // $('li').text('Indonesia');
+            $('.amerika').text('Amerika');
+        });
+    </script> -->
+</body>
+</html>

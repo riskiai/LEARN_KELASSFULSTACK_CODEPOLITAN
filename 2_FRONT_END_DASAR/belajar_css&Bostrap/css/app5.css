@@ -1,0 +1,33 @@
+h1 {
+
+    text-align: center;
+
+}
+
+#container {
+
+    background-color: #003049;
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+    border: 5px solid #003049;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column-reverse; */
+    flex-direction: row;
+    justify-content: center;
+    /* justify-content: space-between;
+     */
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
+    /* align-items: flex-start; */
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+#container div {
+
+    width: 200px;
+    height: 200px;
+
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS 1 </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="app.css">
+    
+    
+    <style>
+    /* CSS untuk efek transisi "custom" */
+    .custom-enter-active, .custom-leave-active {
+        animation: fadeInDown 1s, fadeOutUp 1s;
+    }
+    .custom-enter, .custom-leave-to /* .custom-leave-active di Vue 2.1.8+ */ {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    </style>
+    <!--     
+    <style>
+        .custom-enter-active, .custom-leave-active {
+          transition: opacity 5s;
+        }
+        .custom-enter, .custom-leave-to /* .custom-leave-active di Vue 2.1.8+ */ {
+          opacity: 0;
+        }
+        </style> -->
+
+</head>
+<body>
+
+    <!-- Membuat elemen untuk memanggil object Vue  -->
+    <!-- Pemanggilan ke appjs1 -->
+    <!-- <div class="container" id="app">
+      <div class="row d-flex mb-3 align-items-center ">
+        <div class="col-sm-4">
+             <img class="img-fluid" v-bind:src="image" v-bind:alt="name">
+        </div>
+        <div class="col">
+            <h2 class="text-info">{{ name }}</h2>
+            <p class="mb-0">{{ description }}</p>
+            <div 
+                class="h5 float-left">RP{{ price }}
+            </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Pemanggilan ke appjs2 -->
+    <!-- Pemanggilan Perulangan => v-for -->
+    <!-- <div class="container" id="app">
+        <div class="row d-flex mb-3 align-items-center " v-for="item in products">
+          <div class="col-sm-4">
+               <img class="img-fluid" v-bind:src="item.image" v-bind:alt="name">
+          </div>
+          <div class="col">
+              <h2 class="text-info">{{ item.name }}</h2>
+              <p class="mb-0">{{ item.description }}</p>
+              <div 
+                  class="h5 float-left">RP{{ item.price }}
+              </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Peamanggilan ke appjs3 -->
+      <!-- Pemanggilan Perkondisian => v-if -->
+     <!--  <div class="container" id="app">
+        <div class="row d-flex mb-3 align-items-center " v-for="item in products">
+
+            <div v-if="item.price <= Number(maximum)">
+
+                <div class="col-sm-4">
+                    <img class="img-fluid" v-bind:src="item.image" v-bind:alt="name">
+               </div>
+               <div class="col">
+                   <h2 class="text-info">{{ item.name }}</h2>
+                   <p class="mb-0">{{ item.description }}</p>
+                   <div 
+                       class="h5 float-left">RP{{ item.price }}
+                   </div>
+               </div>
+            </div>
+        </div>
+      </div>-->
+
+
+      <!-- Menangani Input Data dari User -->
+     <!--  <div class="container" id="app"> -->
+
+         <!-- Penggunaan Input Custom Realtime -->
+       <!--  <div class="form-inline mr-auto">
+            <label for="" class="font-weight mr-2">Max</label>
+            <input type="number" class="form-control w-25" v-model="maximum">
+            <input type="range" class="custom-range" min="0" max="200" v-model="maximum">
+        </div>
+      
+
+        <div class="row d-flex mb-3 align-items-center " v-for="item in products"> -->
+
+            <!-- Perulangannya Untuk Menampilkan Data -->
+          <!--   <div v-if="item.price <= Number(maximum)">
+
+                <div class="col-sm-4">
+                    <img class="img-fluid" v-bind:src="item.image" v-bind:alt="name">
+               </div>
+               <div class="col">
+                   <h2 class="text-info">{{ item.name }}</h2>
+                   <p class="mb-0">{{ item.description }}</p>
+                   <div 
+                       class="h5 float-left">RP{{ item.price }}
+                   </div>
+               </div>
+            </div>
+        </div>
+      </div> -->
+
+
+      <!-- Memanfaatkan Beberapa Event Pemanggilan Realtime API -->
+
+        <!-- Penggunaan Cart : -->
+        <!-- <nav class="navbar navbar-light fixed-top">
+            <div class="navbar-text ml-auto d-flex">
+                <button class="btn btn-sm btn-outline-success" @click="style.sliderStatus = !style.sliderStatus">
+                    <i class="fas fa-dollar-sign"></i>
+                </button>
+                <div class="ml-2" v-if="cart.length > 0">
+                    <b>Cart:</b>
+                    <span class="badge badge-pill badge-success">{{ cart.length }}</span>
+                </div>
+            </div>
+        </nav> -->
+
+        <!-- Chapter 3 -->
+        <div class="container" id="app">
+            <nav class="navbar navbar-light fixed-top">
+                <div class="navbar-text ml-auto d-flex">
+                    <button class="btn btn-sm btn-outline-success" @click="style.sliderStatus = !style.sliderStatus">
+                        <i class="fas fa-dollar-sign"></i>
+                    </button>
+                    <div class="dropdown ml-2" v-if="cart.length > 0">
+                        <button class="btn btn-success btn-sm dropdown-toggle" id="dropdownCart123" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="badge badge-pill badge-light">{{ cartQty }}</span>
+                            <i class="fas fa-shopping-cart mx-2"></i>
+                            <price :value="Number(cartTotal)">
+
+                            </price>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownCart">
+                            <div v-for="(item, index) in cart" :key="index">
+                                <div class="dropdown-item-text text-nowrap text-right">
+                                    <span class="badge badge-pill badge-warning align-text-top mr-1">
+                                        {{ item.qty }}
+                                    </span>
+                                    {{ item.product.name }}
+                                    <b>{{ item.qty * item.product.price | currencyFormat }}</b>
+                                    <a href="#" class="badge badge-danger text-white" @click.stop="deleteItem(index)">-</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <br>
+    
+            <h1>RKShop</h1>
+    
+            <transition name="fade">
+                <div v-if="style.sliderStatus">
+                    <div class="align-items-center" :class="sliderState">
+                        <label for="" :class="style.label">Max</label>
+                        <input type="text" class="form-control mx-2" :style="{'width': style.inputWidth + 'px', 'text-align': 'center'}" v-model="maximum">
+                        <input type="range" class="custom-range" min="0" max="200" v-model="maximum">
+                    </div>
+                </div>
+            </transition>
+    
+            <product-list :products="products" :maximum="maximum" @add="addItem"> </product-list>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+** UNTUK MENJALANKAN NYA YAITU DB MONGO DB **
+
+1. mongod --dbpath="c:\data\db"
+2. mongod => untuk menjalankan mongodbnya
+3. mongosh untuk konfigurasi langsung databasenya
+4. setup nya di website mongod dbnya ada
+
+
+SetUp nya agar bisa menggunakan mongodb :
+masuk folder mongodb nya
+cd data
+cd db 
+
+lalu ketikan mongosh
+
+beberapa perintahnya
+- insert
+use sample_db
+ db.products.insertMany([{name: "Produk nya Riski", price: 10000, tags: ["smartphone", "gadget"]}, {name: "Produk nya Riski", price: 10000, tags: ["smartphone", "gadget"]}, {name: "Produk nya Riski", price: 10000, tags: ["smartphone", "gadget"]}, {name: "Produk nya Riski", price: 10000, tags: ["smartphone", "gadget"]}])
+
+ db.products.find({color: {$in : ['hitam', 'abu-abu']}}) mencari data
+
+// proses pencarian data
+db.products.find({price: { $gt: 500000 }, color: 'putih' })
+
+// pencarian lainnya pakai operator
+ db.products.find({ price: { $gt: 500000 }, color: { $in: ['putih', 'krem'] } })
+
+ untuk melihatnya :
+ db.products.find()
+
+ Perintah deleteMany
+ db.products.deleteMany({name: 'Produk nya Riski'})
+ Perinrah deleteOne
+ 
+
+
+link untuk data json formater
+https://www.text-utils.com/json-formatter/
+
+link dokumentasi insert mongodb
+https://www.mongodb.com/docs/mongodb-shell/crud/insert/
+
+
+// BELAJAR MONGODB MENGGUNAKAN JAVASCRIPT
+ketika ingin ngecek data db nya 
+1. mongosh
+2. use movie_db
+3. db.movies.find() => untuk melihat datanya
+
+
+mongod --dbpath="c:\data\db" => untuk menjalankan juga

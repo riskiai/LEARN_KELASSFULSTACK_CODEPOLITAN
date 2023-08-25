@@ -1,0 +1,32 @@
+section p {
+    font-size: 16px;
+    color: aqua;
+}
+
+section p:hover {
+
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+
+input[type="text"] {
+    color: red;
+}
+
+
+button {
+    background-color: aqua;
+    color: white;
+}
+
+button:hover {
+    background-color: red;
+}
+
+
+section:nth-of-type(1) {
+    background-color: rgb(195, 194, 194);
+}
+
+ 

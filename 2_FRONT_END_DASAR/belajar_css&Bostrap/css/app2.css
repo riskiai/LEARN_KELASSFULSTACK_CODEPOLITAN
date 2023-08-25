@@ -1,0 +1,39 @@
+* {
+
+    background-color: azure;
+    
+
+}
+
+ul {
+    color: red;
+}
+
+#list1 {
+
+    background-color: grey;
+    color: aquamarine;
+
+}
+
+#list2 {
+    background-color: rgb(173, 170, 170);
+    color: blue;
+    text-decoration: underline blue;
+}
+
+#list3 {
+    background-color: rgb(224, 214, 214);
+    color: green;
+}
+
+
+
+.bottom {
+
+
+    background-color: blue;
+    color: white;
+    border-color: blue;
+
+}

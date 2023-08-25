@@ -1,0 +1,59 @@
+
+h1 {
+    color: blue;
+    text-align: center;
+    text-decoration: underline blue;
+    font-size: 150px;
+}
+
+button {
+
+    color: white;
+    background-color: blue;
+    font-size: small;
+}
+
+
+h2 {
+
+    color: blue;
+
+}
+
+.but {
+
+    background-color: red;
+    color: white;
+    border-color: red;
+
+}
+
+.but1 {
+
+    background-color: blue;
+    color: white;
+    border-color: blue;
+
+    
+}
+
+.but2 {
+
+    background-color: aqua;
+    color: white;
+    border-color: aqua;
+
+}
+
+p {
+
+    color: white;
+    background-color: #a09a9a;
+    font-weight: lighter;
+    line-height: 1.5;
+    letter-spacing: 1;
+}
+
+a {
+    text-decoration: none;
+}

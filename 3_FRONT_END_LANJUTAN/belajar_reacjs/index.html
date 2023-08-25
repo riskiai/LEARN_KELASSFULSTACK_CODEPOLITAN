@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <title>Belajar React</title>
+
+    <style>
+        .header {
+            background-color: blueviolet;
+            color: white;
+            padding: 10px;
+            font-family: Lato, sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div id="app"></div>
+
+    <script type="text/babel">
+        let header = (
+            <header class="header">
+                <h1>Belajar Menggunakan JSX pada react</h1>
+                <p>Tutorial ReactJS Untuk Pemula</p>    
+            </header>
+        );
+
+        ReactDOM.render(header, document.getElementById("app"));
+    </script>
+
+
+</body>
+</html>
