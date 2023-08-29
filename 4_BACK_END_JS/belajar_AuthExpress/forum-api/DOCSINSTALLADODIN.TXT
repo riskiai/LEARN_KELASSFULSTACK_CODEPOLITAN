@@ -1,0 +1,11 @@
+STEP STEP LANGKAH INSTALL STRUKTUR ADODINJS
+1. npm i -g yarn
+2. yarn create adonis-ts-app forum-api
+3. Pilih api
+4. bikin nama folder
+5. pilih y
+6. pilih y
+7. selesai
+
+menjalnkannya
+node ace serve --watch

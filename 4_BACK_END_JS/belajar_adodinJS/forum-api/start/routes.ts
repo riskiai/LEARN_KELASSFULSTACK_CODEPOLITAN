@@ -19,7 +19,39 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import ThreadsController from 'App/Controllers/Http/ThreadsController'
 
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+// Membuat API
+Route.group(() => {
+  Route.post('/auth/register', 'AuthController.register')
+  Route.post('/auth/login', 'AuthController.login')
+
+ /*  
+  Route.get('/threads', 'ThreadsController.index')
+  Route.post('/threads', 'ThreadsController.store').middleware('auth')
+  Route.get('/threads/:id', 'ThreadsController.show')
+  Route.put('/threads/:id', 'ThreadsController.update').middleware('auth')
+  Route.delete('/threads/:id', 'ThreadsController.destroy').middleware('auth')
+ */
+
+  // REFACTORING ROUTE AGAR LEBIH RINGKAS
+  Route.resource('/threads', 'ThreadsController').apiOnly().middleware({
+    store: 'auth',
+    update: 'auth',
+    destroy: 'auth',
+  })
+
+  // Route.post('/threads/:thread_id/replies', 'RepliesController.store').middleware('auth')
+
+  Route.resource('threads.replies', 'RepliesController').only(['store']).middleware({
+    store: 'auth',
+  })
+
+}).prefix('/api')
+
+
+
