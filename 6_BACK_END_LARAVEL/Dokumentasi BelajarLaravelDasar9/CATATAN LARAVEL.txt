@@ -1,0 +1,257 @@
+ACTION METHOD 
+GET => UNTUK MENGAMBIL DATA Dan Biasanya action yang di PAKE FUNCTION #INDEX
+POST => UNTUK MENAMBAH DATA BARU Biasanya action yang di PAKE FUNCTION #CREATE
+PATCH => Untuk Mengubah Data Biasanya action yang dipake FUNCTION #UPDATE
+PUT => Untuk Mengubah Data biasanya action yang dipake FUNCTION #STATUS
+DELETE => Untuk Menghapus Data biasanya action yang dipake adalah Function #DESTROY 
+
+
+HTTP Status Codes:
+200 - OK
+201 - Created 
+202 - Accepted 
+
+
+400 - Bad Request
+401 - Unauthorized
+403 - Forbidden
+404 - Not Found
+422 - Unprocessable Entity
+
+
+php artisan make:controller PostController --resource => Untuk Membuat Beberapa Action Method nya seperti create,update,delete.
+
+
+php artisan route:list => Melihat Route apa saja yang sudah kita buat
+
+
+
+// PENGECEKAN DATA 
+ // exit; => Menghentikan Program Sementara
+ // dd => Adalah dum and die
+ // ddd => Adalah dum and die and debug
+ // CSRF => Adalah untuk melakukan Penyeleksian Data
+
+
+
+// DATABASE MIGRATION
+--> Perintah Rollback Untuk Mengembalikan dalam fungsi sebelumnya
+--> php artisan migrate:rollback --> Membatalkan migration sebelumnya dengan menjalankan action down
+--> php artisan make:migration add_active_to_posts -> Menambahkan File active/ Mengupdate
+
+--> php artisan make:migration create_posts_table -> Membuat Table
+--> DB -> Harus Di Import Dulu Formatnya
+
+
+// Cara Menyimpan Method PATCH
+  @method('PATCH')
+
+
+// Laravel Library Tinker
+Tinker adalah alat yang disediakan oleh Laravel untuk berinteraksi dengan aplikasi Anda melalui baris perintah (CLI). Ini adalah konsol REPL (Read-Eval-Print Loop) yang memungkinkan Anda menjalankan kode Laravel dan mengakses model, layanan, dan komponen lainnya dalam lingkungan Laravel yang aktif.
+
+- composer require laravel/tinker
+- php artisan tinker
+- DB::table('posts')->get(); => Menampilkan semua data
+- DB::table('posts')->where('id', 6)->get();  => Filter Data Berdasarkan ID
+
+
+// OOP DI LARAVEL
+-  Instansiasi Model(Datanya Harus Di isi Dulu)
+   => $user->email = "aldo@gmail.com"                                                             
+   => $user->password = 12345;   
+
+   $user->save() => Menyimpan Ke Database
+   $user3 = User::first();  => Mengambil Data yang pertama
+
+- Static Function
+  Menggunakan Hal Tersebut bisa melakukan penggunaan ->
+    public $abc;  
+
+    public function get_abc() {
+        return $this->abc;
+  }
+
+ // Contoh Function Static
+    public static function print_sesuatu(){
+        echo "ABCDE";
+    }
+}
+
+first() => Itu Static Function
+
+
+
+Perbedaan Dari -> dan :: itu =
+  - Gunakan :: ketika pertama kali memanggil sebuah method khsususnya di eloquent
+  - Gunaka -> Untuk memanggil sebuah fungsinya
+
+
+// Menyimpan data di database Di Query Builder
+        DB::table('posts')->insert([
+            'title' => $title,
+            'content' => $content,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+return redirect('postsData');
+
+
+// Menyimpan Data di Eloquent ORM 
+        $posts = Post::where('active', true)->get();
+        $view_data = [
+            'posts' => $posts,
+        ];
+
+ Menggunakan ORM Lebih Singkat 
+
+
+// Soft Deletes
+   => Jadi Soft Deletes adalah penghapusan data tetapi tidak menghapus data di database   
+      hanya di aplikasinya saja 
+
+   => php artisan make:migration add_soft_deletes_to_posts => Menambahkan data 
+   => php artisan migrate
+   => use Illuminate\Database\Eloquent\SoftDeletes; // Gunakan di Models Post
+   => use SoftDeletes; => Untuk Menggunakan Delete
+
+// Relasi Model
+php artisan make:model Comment --migration => Membuat Model Dan Migrasinya
+
+// Mencoba Relasi Model
+$post = Post::first() 
+Post::first()->comments()->get() => Untuk Mengambil Relasi Database di comments
+Post::first()->comments()->get()->all() => Datanya Keambil Dalam Bentuk Array
+Post::first()->comments()->get()->all()[0]->comment
+
+// Membuat Model Event
+   => Slug 
+   php artisan make:migration add_slug_to_posts 
+
+
+// TIPE ARRAY Untuk Memanggil Data
+[1,2,3]
+[
+     'a' => 1,
+     'b' => 2,
+     'c' => 3
+]
+
+
+// Menyimpan Data Sementara/Dumy Di Laravel 
+// Mengambil data di Folder Storage
+        // exit; // Menghentikan Program Sementara
+        // dd // adalah dum and die
+        // ddd // adalah dum and die and debug
+        $postsDate = Storage::get('posts.txt');
+        $postsDate = explode("\n", $postsDate);
+      
+        // Membuat Data Array
+        $view_data = [
+            // 'posts' => "Ini Postingan.",
+            // 'posts' => ['Satu', 'Dua', 'Tiga']
+            // CARA OTOMATIS DATANYA UDAH DI SET SEPERTI DI ATAS
+            'postsDate' => $postsDate
+
+            // CARA MANUAL
+            /*  [
+                    // Title                Content
+                    [  "Mengenal Laravel", "Ini adalah blog laravel"],
+                    ["Mengenal Codepolitan", "Ini adalah Blog Codepolitan"] 
+                ] */
+        ];
+
+{{-- Menampilkan Satu Variable --}}
+{{-- {{ $posts }} --}} {{-- Sama saja dengan <?php echo $posts ?> --}}
+
+{{-- Cara Menggunakan Looping Di Blade --}}
+{{-- @foreach($posts as $post)
+     {{ $post }} <br />  
+@endforeach --}}
+
+
+
+// Tamplate Blade
+Header _Footer
+@section('content')
+@endsection
+
+Untuk Menghubungkannya pakai :
+@yield('content') => nama sectionnya apa ?
+
+Untuk Menggunakannya tidak cukup yield beri tahu dulu di aplikasi yang akan dihubungkan 
+ @extends('layouts.app')
+
+@include(layouts.app.header) => contoh untuk memihsakna header
+
+
+
+// Autehntication
+Gunakan di AuthController.php
+use Illuminate\Support\Facades\Auth;
+
+- get => itu untuk mencetak
+- hash = > untuk melakukan pengecekannya saja 
+
+// Membuat user baru dulu tapi harus di enkripsi pake Hash
+User::create([                                                                         
+. 'name' => 'Riski AI',                                                                  
+. 'email' => 'riski@gmail.com',                                                          
+. 'password' => Hash::make('123')                                                        
+. ])  
+
+Harus Dengan Autehnticationnya Seperti penamabahan Karakter, seperti contoh :
+ 	$request->validate([
+             'name' => 'required',
+             'email' => 'required|email|unique:users',
+             'password' => 'required|min:6|confirmed'
+                 
+        ]);
+
+// PENGECEKAN DATA NYA, Menggunakan ini di bladenya :
+ {{-- Proses Pembacaan Error salah ke pemberitahuan ke users --}}
+        @if($errors->has('password'))
+            <span class="text-danger">{{ $errors->first('password') }}</span>
+        @endif
+
+
+// SEKILAS TENTANG SMTP (Simple Mail Transfer Protocol)
+   => Notifikasi Laravel
+   => mailtrap
+
+// Mengirim Email Menggunakan Mailtrap
+
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=efc7beb41ad824
+MAIL_PASSWORD=99d036bc5278f3
+
+Cara agar ingin Reel 
+harus punya akun dari snmpt dari gmailnya , atau dari id cloudhostnya
+nanti ketika sudah punya akunnya tinggal ganti seperti Mail_Hostnya,port,username,dan passwordnya
+
+
+// Membuat Struktur Body Dari Email
+Tidak Perlu Menggunakan Script JS di email
+
+// Penjelasan HTTP REQUEST
+// Persiapan Notifikasi Telegram => Sender(Laravel Server) => HTTP Request => API Server(Telegram) => Push Notif => Apk Telegram
+
+
+// Persiapan Notifikasi Aplikasi Telegram
+1. Apk Telegram
+2. Bot Telegram --> API Token
+3. Channel Telegram --> ID Channel
+
+
+// Implementasi Telegram Boot
+https://api.telegram.org/bot6424900378:AAF41rgsPfJD_hdlxhAhRt1TIfJS39Z0RQU/getUpdates
+Untuk Mengambil datanya Telegram Bot
+
+https://api.telegram.org/bot6424900378:AAF41rgsPfJD_hdlxhAhRt1TIfJS39Z0RQU/sendMessage
+Mengirim Request Telegram nya Pakai JSON
+
+
+

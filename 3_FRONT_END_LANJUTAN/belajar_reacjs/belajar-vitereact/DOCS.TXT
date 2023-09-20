@@ -1,0 +1,9 @@
+MENJALANKAN BEBERAPA REACT :
+1. yarn dev / npm run dev
+2. link githubnya : https://github.com/nusendra/reactjs-basic
+
+// CARA MEMBIKIN APLIKASINYA
+3. yarn create vite
+4. Pilih React
+5. Pilih JS
+6. jalankan yarn

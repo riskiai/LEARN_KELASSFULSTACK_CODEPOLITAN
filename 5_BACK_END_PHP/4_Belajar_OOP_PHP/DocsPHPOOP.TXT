@@ -1,0 +1,18 @@
+APA ITU OOP ?
+- Object-oriented Programming
+- Struktur Data yang menyimpan nilai dan fungsi
+- PHP Merupakan bahasa scripting atau procedural
+- Fitur OOP ada sejak versi PHP 5.0
+
+Jadi, Apa Itu Object ?
+- Object Merupakan sekumpulan kode dalam satu kebutuhan
+- Abstraksi Dalam Kode yang mewakili object nyata
+- Properties
+- Methods
+
+Manfaat OOP ?
+- Mengatur Kode Lebih Mudah Diperlihara
+- Lebih Jelas dan Mengurangi kompleksitas
+- Memungkinkan membuat fungsi sederhana untuk interaksi yang 
+  kompleks 
+- Modular, reusable code

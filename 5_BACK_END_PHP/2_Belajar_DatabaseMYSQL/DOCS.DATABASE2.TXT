@@ -1,0 +1,193 @@
+// DICODING
+JENIS JENIS DBMS 
+1. HIERARCHICAL DMBMS
+   => Menyimpan data dengan hubungan seperti parents (orang tua) dan child (anak)
+2. NETWORK DBMS
+   => Memiliki hubungan antar data yang lebih rumit, yaitu hubungan many to many.
+3. RELATION DBMS
+   => Model ini didasarkan pada normalisasi data dalam baris dan kolom tabel yang merupakan model relasional, disimpan dalam struktur tetap dan dimanipulasi menggunakan SQL. Ini adalah sistem data diatur dan dinormalisasi dalam tabel 2D menggunakan baris dan kolom.
+4. OBJECT-ORIENTED MODEL
+   => Data disimpan dalam bentuk objek. Struktur yang disebut kelas yang menampilkan data di dalamnya ini adalah salah satu komponen DBMS yang mendefinisikan basis data sebagai kumpulan objek yang menyimpan nilai dan operasi anggota data.
+
+MENGENAL TEORI STRUCTURED QUERY LANGUAGE (SQL)
+DDL  => 
+      VIEW => VIEW atau tabel virtual adalah tabel yang hanya ada saat Anda menggunakan view dalam query. Tujuan  dibuatnya VIEW adalah untuk mempermudah penulisan query dan juga alasan keamanan karena dapat menyembunyikan   beberapa kolom yang bersifat rahasia, atau dalam beberapa kasus digunakan untuk mempercepat proses menampilkan data.
+
+      // CARA MEMBUAT VIEW
+      CREATE VIEW [Penumpang] AS
+      SELECT no_penumpang, nama_penumpang
+      FROM tabel_penumpang 
+      WHERE riwayat_penyakit = 'Tidak ada';
+
+DML => 
+      Data Manipulation Language (DML) merupakan sub-perintah pada SQL yang dimanfaatkan dalam manipulasi basis data yang sudah dibuat. Nah, pada modul ini, Anda akan mengenali, mengidentifikasi penggunaan query, serta latihan untuk meningkatkan kemampuan dalam SQL. Penasaran? Yuk, simak penjelasannya.
+
+// MENGENAL CONSTRAINT
+   => Constraint adalah batasan yang ditempatkan dalam satu atau lebih kolom tabel. Ada beberapa jenis constraint, di antaranya primary key, foreign key, unique, dan check. Pada kelas Belajar Dasar Structured Query Language (SQL) ini, Anda hanya akan mempelajari primary key dan unique karena hanya akan fokus terhadap tabel tunggal, sedangkan untuk foreign key dan check bisa Anda dapatkan di kelas tingkat lanjutan. 
+
+   => NOT NULL Berfungsi untuk memastikan bahwa setiap kolom tabel memiliki nilai dan tidak kosong. Perlu digarisbawahi bahwa kosong dan nol (0) adalah berbeda. Kosong berarti tidak memiliki nilai, sedangkan nol (0) adalah sebuah nilai.
+
+   => UNIQUE Ini memastikan setiap record pada tabel memiliki nilai yang unik atau berbeda.
+
+   => INDEX Pada bagian ini, Anda akan dikenalkan dengan index. Menurut KBBI, index atau indeks adalah kata atau istilah penting yang terdapat dalam buku cetakan (biasanya pada akhir buku) dan tersusun menurut abjad untuk memberikan informasi mengenai halaman tempat kata atau istilah itu ditemukan. 
+
+// PENGENALAN DIAGRAM 
+1. ENTITY
+2. ENTITY RELATIONAL DIAGRAM
+
+
+// PENERAPAN DI PHP MAH
+1. INSERT INTO nama_tabel SET namafield1, namafield2,
+2. UPDATE nama_tabel SET namafield1, namafield2 WHERE='id',
+3. ALTER TABLE nama_table change nama_field diubah nama_fieldBaru
+4. DELETE FROM nama_table WHERE nama_field = 'isi_field'
+5. UPDATE nama_table 
+   SET nama_field = 'isi_field'
+   WHERE nama_field = 'isi_field'
+   AND nama_field = 'isi_field'
+
+// RANGKUMAN 
+1. DDL Berikut adalah dari DDL, di antaranya CREATE TABLE, DROP TABLE, dan VIEW.
+   => CREATE TABLE nama_tabel
+      (
+         nama_kolom1,
+         nama_kolom2,
+      );
+   
+   => DROP TABLE (nama_table)
+
+   => CREATE VIEW (nama kolom yang akan Anda perlihatkan) AS
+      SELECT nama_kolom1, nama_kolom 2
+      FROM nama_tabel
+      WHERE nama_kolom;
+
+2. DML terdapat empat perintah, yaitu SELECT, INSERT, DELETE, dan UPDATE.
+   => SELECT * FROM 
+   => INSERT INTO
+   => DELETE FROM
+   => UPDATE nama_tabel
+      SET nama_kolom = newValue
+
+3. CONSTRAINTS Ada beberapa jenis constraint, di antaranya primary key, foreign key, unique, dan check.
+   => NOT NULL , KOSONG = NULL(TIDAK BERNILAI), 0 = NOT NULL (BERNILAI)
+   => UNIQUE NILAI BERBEDA SATU SAMA LAIN (TIDAK TERDAPAT DUPLIKAT)
+   => PRIMARY KEY Nilai unik yang dijadikan sebuah referensi serta tidak boleh sama dengan yang lain. Contoh: 
+      Nomor Induk Kewarganegaraan, email, dll.
+   => INDEX 
+      CREATE INDEX nama_index
+      ON nama_tabel (nama_kolom);
+
+4. PENGENALAN DIAGRAM 
+   ENTITY => TABEL tunggal
+   Entity Relational Diagram (ERD) => Tabel yang terdiri dari tabel-tabel tunggal yang saling terhubung satu sama lain.
+
+
+// JENIS JENIS DATA 
+1. DATA TERSTRUKTUR 
+   => Data terstruktur adalah salah satu jenis data yang disusun dengan rapi dan diatur sedemikian rupa sehingga memiliki format atau bentuk yang tetap. 
+
+2. DATA TIDAK TERSTRUKTUR
+   => Seperti namanya, data tidak terstruktur bahwa data ini tidak memiliki struktur yang beraturan.
+
+3. DATA SEMI TERSTRUKTUR
+   => Data semi terstruktur adalah data dengan bentuk yang tidak dikenal.
+
+4. DATA NUMERIK 
+   => Data numerik adalah data yang berwujud angka yang bisa didapat dari sebuah pengukuran. Misal, ukuran tinggi badan, berat badan, dan tekanan darah kita.
+
+5. DATA KATEGORIKAL
+   => Data kategorikal merupakan data yang dapat dikelompokkan dan terbagi berdasarkan karakteristik atau ciri khasnya masing-masing.
+   
+
+// LATIHAN 
+1. INSERT 
+   INSERT INTO station (station_name, line, year, prensensi, distance, company)
+    -> VALUES ('Atami', 'Tokaldo_Shinkan', 1969, 'Shizuoka', 180.3, 'JR_CENTRAL'),
+    -> ('Mikawa', 'Tokaldo_Shinkan', 1968, 'Aichi', 336.3, 'JR_CENTRAL');
+
+2. SELECT
+   SELECT station_name
+   -> FROM station;
+
+3. WHERE 
+   SELECT * FROM station
+   -> WHERE distance = 336.3;
+
+4. AND, OR , NOT
+   = SAMA DENGAN
+   <> / !=  TIDAK SAMA DENGAN
+   > LEBIH BESAR
+   < LEBIH KECIL
+   >= LEBIH BESAR ATAU SAMA DENGAN
+   <= LEBIH KECIL ATAU SAMA DENGAN
+
+   CONTOH 1 WHERE AND :
+   SELECT *
+    -> FROM station
+    -> WHERE year = 1965
+    -> AND station_name = 'Tokyo';
+
+   CONTOH 2 WHERE OR :
+   SELECT * FROM station
+    -> WHERE station_name = 'Atami'
+    -> OR station_name = 'Mikawa';
+
+   CONTOH 3 WHERE NOT :
+   SELECT * FROM station
+    -> WHERE NOT year = 1965;
+
+5. LIKE
+   => Tanda persen (%) mewakili nol, satu, atau beberapa karakter.
+      Tanda garis bawah ( _ ) mewakili satu karakter tunggal.
+   
+   CONTOH LIKE '%' :
+   SELECT *
+    -> FROM station
+    -> WHERE prensensi LIKE 'A%';
+
+6. ALIAS
+   => ALIAS pada SQL digunakan untuk memberi nama lain yang bersifat sementara pada tabel atau kolom dalam tabel. Maksud dari sementara adalah pernyataan ALIAS hanya berlaku pada proses query tersebut.
+   
+   CONTOH ALIAS :
+   SELECT prensensi AS KOTA
+    -> from station;
+
+   CONTOH LAGI :
+   SELECT station_name AS nama_stasiun, year AS tahun, distance AS jarakJauh
+    -> FROM station;
+
+7. UPDATE 
+   => UPDATE adalah untuk mengubah nilai lama menjadi sebuah nilai baru pada sebuah basis data SQL.
+    UPDATE station
+    -> SET line = 'Tokaldo'
+    -> WHERE id = 5;
+
+8. ORDER BY 
+   => ASC DAN DESC 
+   SELECT *
+    -> FROM station
+    -> ORDER BY station_name ASC;
+
+9. LIMIT 
+   => MENUNTUKAN JUMLAH TAMPILAN YANG TAMPIL
+   SELECT *
+    -> FROM station
+    -> LIMIT 2;
+
+10. OFFSET
+   => membantu Anda dalam menemukan sebuah data yang bisa saja berada di awal, tengah, atau bahkan akhir dalam sebuah basis data.
+   SELECT *
+    -> FROM station
+    -> LIMIT 3
+    -> OFFSET 2;
+
+11. DELETEE
+   => MENGHAPUS QUERY DATANYA
+      DELTE
+    -> FROM station
+    -> WHERE distance = 336.3
+    -> ;
+
+
+
+

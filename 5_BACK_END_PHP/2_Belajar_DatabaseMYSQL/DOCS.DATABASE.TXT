@@ -1,0 +1,252 @@
+// KOMPONEN UTAMA
+1. TABEL
+2. KOLOM / FIELD
+3. BARIS / RECORD
+4. TIPE DATA
+5. QUERY
+
+// KOMPONEN UTAMA : TABEL
+1. CUSTOMER 
+2. ORDER
+3. ORDER-ITEMS
+4. MANUFACTUR
+5. PRODUCTS
+
+// KOMPONEN UTAMA : QUERY
+1. DML => SELECT, INSERT, UPDATE, DELETE
+2. DDL => CREATE, ALTER, DROP, TRUNCATE
+3. DCL => GRANT, REVOKE
+4. TCL => COMMIT, ROLLBACK, BEGIN, TRAN, ROLLBACK
+
+// KOMPONEN PENYUSUNAN TABEL
+1. CREATE TABLE anggota (id int, nama varchar(254) ); => Membuat Table
+2. DROP TABLE anggota; => Menghapus
+3. CREATE TABLE anggota (
+    -> id int,
+    -> name varchar(255)
+    -> );
+4. ALTER TABLE anggota
+    -> RENAME TO siswa; => Mengganti nama table di dalam database
+
+5. ALTER TABLE siswa
+    -> ADD COLUMN kelas char(2); => Menambahkan isi field di table siswa
+       DROP
+
+6. DESCRIBE siswa; => Melihat Isi Table Siswa;
+
+// KOMPONEN PRIMARY KEY
+1. CREATE TABLE anggota (
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> nama VARCHAR(50) NOT NULL,
+    -> PRIMARY KEY(id)
+    -> ); => Memmbuat Table Dengan Primary KEY
+
+2. ALTER TABLE siswa
+    -> ADD PRIMARY KEY(id); => Memberikan primary key ke table siswa
+
+3. ALTER TABLE siswa
+    -> DROP PRIMARY KEY; => Menghapus table primary key ke table siswa
+
+// KOMPONEN UNIQUE KEY
+1.  CREATE TABLE penduduk (
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> nik VARCHAR(50) NOT NULL,
+    -> PRIMARY KEY(id),
+    -> UNIQUE KEY(nik)
+    -> );
+    DESCRIBE penduduk; => Menambahkan Unique Key di NIK
+
+2. ALTER TABLE siswa
+    -> ADD UNIQUE KEY(no_induk, name, id); => MULTIPLE DATA UNIQUE KEY 
+
+3. ALTER TABLE siswa
+    -> DROP INDEX no_induk; => Menghapus Isi Field Unique
+
+// KOMPONEN FOREIGN KEY
+// RELASI ANTAR TABLE
+1.  CREATE TABLE kelas(
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> nama VARCHAR(2),
+    -> PRIMARY KEY(id)
+    -> ); => Membuat Relasi Antar Table dengan siswa
+
+2. CREATE TABLE siswa(
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> kelas_id INT NOT NULL,
+    -> nama VARCHAR(50) NOT NULL,
+    -> PRIMARY KEY(id),
+    -> FOREIGN KEY(kelas_id) REFERENCES kelas(id)
+    -> ); => Melakukan REFERENCES/RELASI KE table kelas di field (id)
+
+
+// KOMPONEN OPERASI CREATE READ UPDATE DAN DELETE 
+1. MEMPERSIAPKAN TABLE PROJECT => Customers, Orders, Products, Items.
+2. MEMPERIAPKAN DATANYA YANG BERELASI :
+    MariaDB [mysql_latihanke2]> CREATE TABLE Customers (
+    ->     id INT NOT NULL AUTO_INCREMENT,
+    ->     name CHAR(50) NOT NULL,
+    ->     PRIMARY KEY (id)
+    -> );
+
+    MariaDB [mysql_latihanke2]> CREATE TABLE Products (
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> name CHAR(50) NOT NULL,
+    -> price DECIMAL(10,2) NOT NULL,
+    -> PRIMARY KEY (id)
+    -> );
+
+
+    MariaDB [mysql_latihanke2]> CREATE TABLE Orders (
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> customer_id INT NOT NULL,
+    -> date timestamp NOT NULL,
+    -> PRIMARY KEY (id),
+    -> FOREIGN KEY(customer_id) REFERENCES Customers(id)
+    -> );
+
+
+    MariaDB [mysql_latihanke2]> CREATE TABLE Items (
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> order_id INT NOT NULL,
+    -> product_id INT NOT NULL,
+    -> qty INT NOT NULL,
+    -> PRIMARY KEY(id),
+    -> FOREIGN KEY(order_id) REFERENCES Orders(id),
+    -> FOREIGN KEY(product_id) REFERENCES Products(id)
+    -> );
+
+    NOTE :
+    AUTO_INCREMENT => AKAN OTOMATIS
+    PRIMARY KEY(id) UNTUK OTOMATIS NAMBAH
+
+    FOREIGN KEY ANTAR RELASI DATABASE BERDASARKAN ID
+
+// QUERY MENAMBAHKAN DATA PADA TABLE
+1. INSERT INTO customers (name, city, country)
+    -> VALUES ('RISKI','CIREBON','Indonesia'); 
+
+2. INSERT INTO products (name, price)
+    -> VALUES ('Windows 10 Pro', 150000); 
+
+// QUERY MENAMPILKAN DATA PADA TABLE
+1. SELECT id, name, city, country FROM customers;
+2. SELECT name, price FROM products;
+3. SELECT * FROM customers; => MEMANGGIL SEMUA DATA
+
+// QUERY MENAMBAHKAN DATA PADA FIELD TABLE 
+INSERT INTO customers(name, city, country)
+    -> VALUES ('Debi', 'Indramayu', 'Indoensia');
+
+// QUERY UPDATE DATA
+1. UPDATE customers
+    -> SET name='Gaara', city='Sunagakure'
+    -> WHERE id = 3; => UPDATE DATA BERDASARKAN ID
+
+2. UPDATE customers
+    -> SET city='Jakarta'
+    -> WHERE country = 'Indonesia'; => BERDASARKAN FIELD LAIN
+
+// QUERY DELETE DATA
+1.  DELETE FROM customers
+    -> WHERE country = 'Jepang';
+
+// IMPORT FILE SQL DI MYSQL DARI DATA GENERATOR
+1. KUNJUNGI WEB mockaroo.com
+2. SET FOREIGN_KEY_CHECKS = 0;
+3. TRUNCATE TABLE customers; => Menghapus seluruh data 
+4. SET FOREIGN_KEY__CHECKS = 1;
+5. source " path sql " => Untuk Mengimport Datanya
+
+// Menampilkan Data Degann Limit Tertentu
+1. SELECT * FROM customers LIMIT 10;
+2. SELECT * FROM customers LIMIT 10 OFFSET 10; => MELEWATI DATA 10 PERTAMA
+
+// PENCARIAN DATA DENGAN KONDISI Tertentu
+1. SELECT * FROM customers 
+   -> WHERE country = 'Indonesia';
+
+2. SELECT * FROM customers
+    -> WHERE id < 5;
+
+3. SELECT * FROM customers
+    -> WHERE NOT country = 'Indonesia' LIMIT 10;
+
+4. SELECT * FROM customers
+    -> WHERE country IN ('Indonesia', 'Russia', "German"); => Menampilkan beberapa table dengan nama negara terntu dengan perintah IN
+
+5. SELECT * FROM customers
+    -> WHERE city LIKE 'ber%'; => mencari yang awalannya 'ber'
+
+6. SELECT * FROM customers
+    -> WHERE city LIKE '%ne%'; => Mencari awalan dan akhiran 'ne'
+
+// MENGURUTKAN Baris Data Dengan Order By
+1. SELECT * FROM customers
+    -> ORDER BY name LIMIT 20; 
+
+2. SELECT * FROM customers
+    -> ORDER BY name ASC LIMIT 20; => Mengurtkan Data dari data 'name' ke kecil
+
+3. SELECT * FROM customers
+    -> ORDER BY name DESC LIMIT 20; => Mengurtkan Data dari data 'name' ke besar
+
+4. SELECT * FROM customers
+    -> ORDER BY name, country LIMIT 50;  
+
+5. SELECT * FROM customers
+    -> ORDER BY id ASC, name DESC, city ASC LIMIT 15; => Bisa Dengan Kolaborasi
+
+// MENGELOMPOKAN BARIS DATA DENGAN GROUP BY
+1. SELECT COUNT(id), country FROM customers
+    GROUP BY country; => Menghitung Jumlah Customersnya dimasing masing negara
+
+2. SELECT COUNT(id) AS `Jumlah Customers`, country
+    -> FROM customers
+    -> GROUP BY country; 
+    => MENGALIASKAN NAMA DENGAN AS
+
+3.  SELECT AVG(age), country
+    -> FROM customers
+    -> GROUP BY country; => Menampilkan Rata rata nilai
+
+4. SELECT MAX(ukuran_produk) AS `ukuran Yang Gede`,country
+    -> FROM customers
+    -> GROUP BY country; => MENAMPILKAN UKURAN TERBESAR
+
+// RELASI JOIN 
+// CONTOH UNTUK MENAMPILKANNYA :
+
+// INNER JOIN
+SELECT * FROM transaski
+    INNER JOIN handphone ON transaski.id_hp = handphone.id_hp
+    INNER JOIN pegawai ON transaski.id_pegawai = pegawai.id_pegawai
+    INNER JOIN pembeli ON transaski.id_pembeli = pembeli.id_pembeli;
+
+// LEFT JOIN
+SELECT 
+    transaski.*, 
+    pembeli.nama AS nama_pembeli, 
+    pegawai.nama_pgw AS nama_pegawai, 
+    handphone.id_hp
+FROM transaski
+LEFT JOIN pembeli ON transaski.id_pembeli = pembeli.id_pembeli
+LEFT JOIN pegawai ON transaski.id_pegawai = pegawai.id_pegawai
+LEFT JOIN handphone ON transaski.id_hp = handphone.id_hp;
+
+
+// RIGHT JOIN
+SELECT 
+    transaski.*, 
+    pembeli.nama AS nama_pembeli, 
+    pegawai.nama_pgw AS nama_pegawai, 
+    handphone.id_hp
+FROM transaski
+RIGHT JOIN pembeli ON transaski.id_pembeli = pembeli.id_pembeli
+RIGHT JOIN pegawai ON transaski.id_pegawai = pegawai.id_pegawai
+RIGHT JOIN handphone ON transaski.id_hp = handphone.id_hp;
+
+
+// PENERAPAN DI PHP MAH
+1. INSERT INTO nama_tabel SET namafield1, namafield2,
+2. UPDATE nama_tabel SET namafield1, namafield2 WHERE='id',
+3. ALTER TABLE nama_table change nama_field diubah nama_fieldBaru

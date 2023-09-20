@@ -1,0 +1,3 @@
+alt + x => untuk HTML nya 
+
+ctrl + v => untuk mengcopy data classnya

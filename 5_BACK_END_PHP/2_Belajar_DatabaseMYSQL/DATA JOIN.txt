@@ -1,0 +1,58 @@
+INSERT INTO handphone (merk, tipe, harga_hp, stock_hp, spesifikasi)
+VALUES (
+    'readmi',
+    'note 10 ',
+    300000,
+    1,
+    'android'
+);
+
+INSERT INTO handphone (merk, tipe, harga_hp, stock_hp, spesifikasi)
+VALUES (
+    'samsung',
+    'az 10 ',
+    350000,
+    12,
+    'android'
+);
+
+INSERT INTO pegawai (nama_pgw, alamat_pgw, telp_pgw)
+VALUES (
+    'riski',
+    'indramayu',
+    '08912312312'
+);
+
+INSERT INTO pegawai (nama_pgw, alamat_pgw, telp_pgw)
+VALUES (
+    'debi',
+    'bandung',
+    '08912312312'
+);
+
+INSERT INTO pegawai (nama_pgw, alamat_pgw, telp_pgw)
+VALUES (
+    'rolan',
+    'cebon',
+    '08912312312'
+);
+
+INSERT INTO pembeli (nama, alamat, no_hp)
+VALUES (
+    'aziz',
+    'dermayu',
+    '08912123123'
+);
+
+INSERT INTO pembeli (nama, alamat, no_hp)
+VALUES (
+    'diaz',
+    'dermayu',
+    '08952123123'
+);
+
+
+ INSERT INTO transaski (id_pembeli, id_pegawai, id_hp, total_harga,  jumlah)
+    VALUES
+    (2, 2, 1, 12000000, 1);
+
