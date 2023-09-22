@@ -1,0 +1,43 @@
+// TENTANG LARAVEL 8
+Proteksi CSRF untuk Menghindari Injection SQL
+
+Contoh Program :
+
+/* FORMAT DATA JSON */
+Route::get('hello', function () {
+    $dataArray = [
+        'message' => 'Hello, World'
+    ];
+    // return $dataArray;
+    return response()->json($dataArray, 404);
+});
+
+/* Fungsi Debugging di Laravel Untuk Menampilkan Response */
+Route::get('debug', function () {
+    $dataArray = [
+        'message' => 'Hello, World'
+    ];
+    // dd($dataArray);
+    dd($dataArray);
+});
+
+
+// contoh request dalam penerapan di controller 
+ public function update(Request $request, $key)
+    {   
+        $this->tasklist[$key] = $request->task;
+        return $this->tasklist;
+    }
+
+
+// UNTUK MEMANGGIL DATA DI POSTMAN PADA LARAVEL 
+localhost:8000/tasks/first
+
+// UPDATE DATA 
+localhost:8000/tasks/second , form-data 
+
+// DELETE DATA
+localhost:8000/tasks/third
+
+// SEARCH DATA
+localhost:8000/tasks?search=first

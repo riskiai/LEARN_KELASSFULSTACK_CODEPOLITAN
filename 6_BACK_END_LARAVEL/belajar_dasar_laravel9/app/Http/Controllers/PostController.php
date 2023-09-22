@@ -45,19 +45,21 @@ class PostController extends Controller
 
 
         /* Untuk Melakukan Pengamanan Untuk Login */
-        if(!Auth::check()) {
+        if(Auth::check()) {
             /* Jika Tidak Login Ke Tampilan Halaman Tersebut */
+             // Jika Benar Datanya Masuk Ke Dashboard Blog
+            $posts = Post::active()->limit(5)->get();
+            $view_data = [
+                'posts' => $posts,
+            ];
+            
+            // Menuju Ke Redirect Ke file index.blade.php
+            // . Adalah Penyambung Folder Dan File
+            return view('posts.index', $view_data);
+       
+        }  else {
             return redirect('login');
-        }  
-        // Jika Benar Datanya Masuk Ke Dashboard Blog
-        $posts = Post::active()->limit(5)->get();
-        $view_data = [
-            'posts' => $posts,
-        ];
-
-        // Menuju Ke Redirect Ke file index.blade.php
-        // . Adalah Penyambung Folder Dan File
-        return view('posts.index', $view_data);
+        }
        
     }
 

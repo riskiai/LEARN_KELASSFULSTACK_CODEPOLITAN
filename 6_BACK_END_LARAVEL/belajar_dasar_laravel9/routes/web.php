@@ -50,8 +50,6 @@ Route::get('logout', [AuthController::class, 'logoutBerhasil']);
 Route::get('registrasi', [AuthController::class, 'register_form']);
 Route::post('registrasi', [AuthController::class, 'register']);
 
-
-
 // Controller Resource 
 // Route::resource('posts', PostController::class);
 Route::post('postsData', [PostController::class, 'store']);
@@ -61,7 +59,6 @@ Route::get('postsData/create', [PostController::class, 'create']);
 
 // Harus Dipindahkan Kebawah Kalo id
 Route::get('postsData/{id}', [PostController::class, 'show']);
-
 
 // Untuk Mengubah Postingan Dan Proses Pengubahan Datanya
 Route::get('postsData/{id}/edit', [PostController::class, 'edit']);

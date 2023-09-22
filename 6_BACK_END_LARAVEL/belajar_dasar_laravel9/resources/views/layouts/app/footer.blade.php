@@ -1,8 +1,12 @@
-  {{-- Footer --}}
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary">© 2023 Blog, Codepolitan</p>
 
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-    </ul>
-  </footer>
+{{-- <div class="border-bottom"> --}}
+<footer class="py-4 my-4">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li class="nav-item"><a href="#" class="nav-link px-3 text-dark">Home</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-3 text-dark">Features</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-3 text-dark">About</a></li>
+    {{-- <li class="nav-item"><a href="#" class="nav-link px-3 text-dark">FAQs</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-3 text-dark">About</a></li> --}}
+  </ul>
+  <p class="text-center text-body-secondary py-2">© 2023 With ❤ <br> <img src="{{ asset('image/logo.png') }}" alt=""></p>
+</footer>
